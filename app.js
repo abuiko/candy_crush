@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // global variables
 
+    // global variables
 
     const grid = document.querySelector('.grid');
     const scoreDisplay = document.getElementById('score');
     const width = 8;
     const squares = [];
     let score = 0;
+
+    // array with candies
 
     const candyColors = [
         'url(img/alternative-blue.png)',
@@ -17,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'url(img/alternative-purple.png)'
     ]
 
+
+    // function to create board with candies
+
     function createBoard() {
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement('div');
@@ -26,16 +31,51 @@ document.addEventListener('DOMContentLoaded', () => {
             square.style.backgroundImage = candyColors[randomColor];
             grid.appendChild(square);
             squares.push(square);
-
         }
     }
 
     createBoard();
 
+    // drag variables
+
+    let colorBeingDragged;
+    let colorBeingReplaced;
+    let squareIdBeingDragged;
+    let squareIdBeingReplaced;
+
+    squares.forEach(square => square.addEventListener('dragstart', dragStart));
+    squares.forEach(square => square.addEventListener('dragend', dragEnd));
+    squares.forEach(square => square.addEventListener('dragover', dragOver));
+    squares.forEach(square => square.addEventListener('dragenter', dragEnter));
+    squares.forEach(square => square.addEventListener('dragleave', dragLeave));
+    squares.forEach(square => square.addEventListener('drop', dragDrop));
 
 
+    function dragStart() {
+        console.log(this.id, 'dragstart');
+    }
 
+    function dragEnd() {
+        console.log(this.id, 'dragend');
 
+    }
+
+    function dragOver() {
+        console.log(this.id, 'dragover');
+
+    }
+
+    function dragEnter() {
+        console.log(this.id, 'dragenter');
+    }
+
+    function dragLeave() {
+        console.log(this.id, 'dragleave');
+    }
+
+    function dragDrop() {
+        console.log(this.id, 'drop');
+    }
 
 
 
