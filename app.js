@@ -56,14 +56,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // the candy grabbed
         colorDragged = this.style.backgroundImage;
+        console.log(colorDragged);
 
         // the candy ID grabbed
         squareIdDragged = parseInt(this.id);
+        console.log(squareIdDragged);
 
     }
 
     function dragEnd() {
-        // console.log(this.id, 'dragend');
+        console.log(this.id, 'dragend');
+
+        // possible moving options
+
+        // let validMoves = [
+        //     squareIdDragged + 1,
+        //     squareIdDragged - 1,
+        //     squareIdDragged + width,
+        //     squareIdDragged - width
+        // ]
+        // console.log(validMoves);
 
     }
 
@@ -81,7 +93,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function dragDrop() {
-        // console.log(this.id, 'drop');
+        console.log(this.id, 'dragDrop');
+
+        colorReplaced = this.style.backgroundImage;
+        console.log(colorReplaced);
+        squareIdReplaced = parseInt(this.id);
+        console.log(squareIdReplaced);
+
     }
 
 
