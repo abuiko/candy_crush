@@ -52,53 +52,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function dragStart() {
-        console.log(this.id, 'dragstart');
+
 
         // the candy grabbed
         colorDragged = this.style.backgroundImage;
-        console.log(colorDragged);
+
 
         // the candy ID grabbed
         squareIdDragged = parseInt(this.id);
-        console.log(squareIdDragged);
+
+
+    }
+
+    function dragOver(e) {
+
+        e.preventDefault();
+    }
+
+    function dragEnter(e) {
+
+        e.preventDefault();
+    }
+
+    function dragLeave() {
+
+    }
+
+    function dragDrop() {
+
+        colorReplaced = this.style.backgroundImage;
+        squareIdReplaced = parseInt(this.id);
+        this.style.backgroundImage = colorDragged;
+        squares[squareIdDragged].style.backgroundImage = colorReplaced;
+        console.log(squares[squareIdDragged]);
 
     }
 
     function dragEnd() {
-        console.log(this.id, 'dragend');
+
 
         // possible moving options
 
-        // let validMoves = [
-        //     squareIdDragged + 1,
-        //     squareIdDragged - 1,
-        //     squareIdDragged + width,
-        //     squareIdDragged - width
-        // ]
-        // console.log(validMoves);
-
-    }
-
-    function dragOver() {
-        // console.log(this.id, 'dragover');
-
-    }
-
-    function dragEnter() {
-        // console.log(this.id, 'dragenter');
-    }
-
-    function dragLeave() {
-        // console.log(this.id, 'dragleave');
-    }
-
-    function dragDrop() {
-        console.log(this.id, 'dragDrop');
-
-        colorReplaced = this.style.backgroundImage;
-        console.log(colorReplaced);
-        squareIdReplaced = parseInt(this.id);
-        console.log(squareIdReplaced);
+        let validMoves = [
+            squareIdDragged + 1,
+            squareIdDragged - 1,
+            squareIdDragged + width,
+            squareIdDragged - width
+        ]
+        let validMove = validMoves.includes(squareIdReplaced);
+        if (squareIdReplaced && validMove) {
+            squareIdReplaced = null;
+        } else if (squareIdReplaced && !validMove) {
+            squares[squareIdReplaced].style.backgroundImage = colorReplaced;
+            squares[squareIdDragged].style.backgroundImage = colorDragged;
+        } else squares[squareIdDragged].style.backgroundImage = colorDragged;
 
     }
 
