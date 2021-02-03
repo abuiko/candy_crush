@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // drag variables
 
-    let colorBeingDragged;
-    let colorBeingReplaced;
-    let squareIdBeingDragged;
-    let squareIdBeingReplaced;
+    let colorDragged;
+    let colorReplaced;
+    let squareIdDragged;
+    let squareIdReplaced;
 
     squares.forEach(square => square.addEventListener('dragstart', dragStart));
     squares.forEach(square => square.addEventListener('dragend', dragEnd));
@@ -53,28 +53,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function dragStart() {
         console.log(this.id, 'dragstart');
+
+        // the candy grabbed
+        colorDragged = this.style.backgroundImage;
+
+        // the candy ID grabbed
+        squareIdDragged = parseInt(this.id);
+
     }
 
     function dragEnd() {
-        console.log(this.id, 'dragend');
+        // console.log(this.id, 'dragend');
 
     }
 
     function dragOver() {
-        console.log(this.id, 'dragover');
+        // console.log(this.id, 'dragover');
 
     }
 
     function dragEnter() {
-        console.log(this.id, 'dragenter');
+        // console.log(this.id, 'dragenter');
     }
 
     function dragLeave() {
-        console.log(this.id, 'dragleave');
+        // console.log(this.id, 'dragleave');
     }
 
     function dragDrop() {
-        console.log(this.id, 'drop');
+        // console.log(this.id, 'drop');
     }
 
 
